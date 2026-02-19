@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .game-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 320px;
+        }
+        input {
+            padding: 10px;
+            width: 80%;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        button {
+            margin-top: 12px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-box">
+    <h2>🎯 Number Guessing Game</h2>
+    <p>Guess a number between <b>1 and 100</b></p>
+    <input type="number" id="guessInput" placeholder="Enter your guess">
+    <br>
+    <button onclick="checkGuess()">Guess</button>
+    <p id="result"></p>
+</div>
+
+<script>
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+    function checkGuess() {
+        const guess = Number(document.getElementById("guessInput").value);
+        const result = document.getElementById("result");
+
+        if (!guess) {
+            result.textContent = "⚠️ Please enter a number!";
+            return;
+        }
+
+        if (guess === randomNumber) {
+            result.textContent = "🎉 Correct! You guessed the number!";
+        } else if (guess > randomNumber) {
+            result.textContent = "⬇️ Too high! Try a lower number.";
+        } else {
+            result.textContent = "⬆️ Too low! Try a higher number.";
+        }
+    }
+</script>
+
+</body>
+</html>
